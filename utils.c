@@ -36,12 +36,13 @@ size_t	ft_strlen(char *s)
 {
 	size_t	leng;
 	leng = 0;
-	while (s[leng])
-		{
-			if(!ft_isdigit((s[leng]) &&  s[leng] != ' ')
-				exit(1);  
-			else
-				leng++; 
-		}
+	int  i = 0 ; 
+	printf("entered here []  %c \n ",s[0]); 
+	while (s[i])
+				{
+				if(s[leng] != ' ') 
+						leng++ ;
+				i++ ; 
+				}; 
 	return (leng);
 }

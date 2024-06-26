@@ -13,6 +13,7 @@ char * parse_args(int ac, char **av)
         total_length += ft_strlen(av[i]);
         i++;
     }
+    printf("total  length [%d]",total_length); 
     char *parsed_args = malloc((total_length + 1) * sizeof(char));
     if (parsed_args == NULL)
         return NULL;

@@ -10,8 +10,8 @@
     {
     int  i  = 0; 
     while(c[i]) 
-    {    if(c[i] < '0' || c[i] > '9')
-        return 0  ;
+    {    if((c[i] < '0' || c[i] > '9') && (c[i] != ' '))
+                return 0  ;
            i++ ; 
              }
     return 1;  

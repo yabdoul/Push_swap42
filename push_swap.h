@@ -2,6 +2,7 @@
 #define PUSH_SWAP_H
 #endif
 #include <stdlib.h>
+#include <stdio.h> 
 typedef struct stack_s {
     int data;
      struct stack_s* next;
