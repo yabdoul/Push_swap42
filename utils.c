@@ -3,6 +3,7 @@
 #include "push_swap.h"
 stack_t * create_node(int data)
 {
+
 	stack_t * node  =  malloc(sizeof(stack_t)); 
 	node->data = data ; 
 	node->next = NULL ;
@@ -31,3 +32,16 @@ void stack_to_list(int ac , char **  av , stack_t * head )
 		add_to_list(node,head) ;  		
 	}
 } 
+size_t	ft_strlen(char *s)
+{
+	size_t	leng;
+	leng = 0;
+	while (s[leng])
+		{
+			if(!ft_isdigit((s[leng]) &&  s[leng] != ' ')
+				exit(1);  
+			else
+				leng++; 
+		}
+	return (leng);
+}
