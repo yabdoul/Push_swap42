@@ -1,13 +1,20 @@
 #include <unistd.h> 
 #include <stdlib.h>
+#include <stdio.h>
 //args validations and reject 
 //what should i check : 
 //if args have an alphab 
 // if args have an space 
 // ,,,,,,,, points or an another symboles 
-    int	ft_isdigit(int c)
+    int	ft_isdigit(char* c)
     {
-	return (c >= '0' && c <= '9');
+    int  i  = 0; 
+    while(c[i]) 
+    {    if(c[i] < '0' || c[i] > '9')
+        return 0  ;
+           i++ ; 
+             }
+    return 1;  
     }
 
 void check_args_numerique(int ac  , char **  av)
@@ -20,19 +27,26 @@ void check_args_numerique(int ac  , char **  av)
             exit(1); 
     }
 } 
-void check_for_repit(int ac ,  char **av)
+void check_for_repeat(int ac ,  char **av)
 {
     int i = 1 ; 
     int  j = i ; 
-    while(i <  ac )
+    while(i < ac )
     {
-        j = i ;  
+        j = i + 1 ;  
         while(j < ac)
         {
-            if(av[i] == av[j++] ) 
+            if(atoi(av[i]) == atoi(av[j++]) ) 
                 exit(1) ; 
-
         } 
         i++;  
     }  
-} 
+}
+
+void  check_final(int ac ,  char ** av )
+{ 
+    int  i =  1  ; 
+    check_args_numerique(ac  ,av) ;
+    check_for_repeat(ac , av ); 
+    
+}
