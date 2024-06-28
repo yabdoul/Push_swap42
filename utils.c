@@ -32,17 +32,23 @@ void stack_to_list(int ac , char **  av , stack_t * head )
 		add_to_list(node,head) ;  		
 	}
 } 
-size_t	ft_strlen(char *s)
+size_t ft_strlen( char *s)
 {
-	size_t	leng;
-	leng = 0;
-	int  i = 0 ; 
-	printf("entered here []  %c \n ",s[0]); 
+    size_t leng = 0;
+    int i = 0;
+	// if(ft_isdigit(s) == 0 )
+	// 	{
+	// 		printf("Error \n") ;
+	// 		exit(0);  
+	// 	}
 	while (s[i])
-				{
-				if(s[leng] != ' ') 
-						leng++ ;
-				i++ ; 
-				}; 
-	return (leng);
+    {
+        if (s[i] != ' ')
+        {
+            leng++;
+        }
+        i++;
+    }
+
+    return leng;
 }

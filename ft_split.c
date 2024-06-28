@@ -1,4 +1,4 @@
-#include "push_swap.c"
+#include "push_swap.h"
 static int	count_words(char const *s, char c)
 {
 	int	i;
@@ -74,7 +74,7 @@ static char	**fill_array(char **tab, char const *s, char c, int i)
 	return (tab);
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split(const char  *s, char c)
 {
 	char	**tab;
 
