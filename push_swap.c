@@ -1,9 +1,21 @@
 #include "push_swap.h"
 int main(int ac  , char **av)
 {
-  int  i = 0 ;  
-  char ** parsed_args  =parse_args(ac ,av ) ; 
-  while(parsed_args[i]) 
-      printf("%s  \n" ,parsed_args[i++]); 
-
+  check_final(ac ,av) ; 
+  int  total_length = 0  ;  
+  int i = 0  ; 
+  char ** parsed_args  =parse_args(ac ,av,&total_length) ; 
+  stack_t *  stack_a =  stack_from_args(parsed_args,total_length) ;
+  stack_t * stack_b = NULL ;
+  // stack_a  = pa(stack_a , stack_b);  
+  // stack_a = pa(stack_a , stack_b );  
+  sa(stack_a) ;  
+  stack_t *tmp = stack_a  ; 
+  while(tmp != NULL )
+  {
+    printf("%d \n",tmp->data); 
+    tmp = tmp->next ; 
+    i++ ; 
+  } 
+ 
 } 

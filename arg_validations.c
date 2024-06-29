@@ -9,11 +9,19 @@
     int	ft_isdigit(char* c)
     {
     int  i  = 0; 
+    if(c[0] == '\0') 
+        {
+            printf("Error\n");  
+            exit(1); 
+        } 
     while(c[i]) 
     {    if((c[i] < '0' || c[i] > '9') && (c[i] != ' '))
-                return 0  ;
+                {
+                    printf("Error\n"); 
+                    exit(1);
+                }
            i++ ; 
-             }
+    }
     return 1;  
     }
 
@@ -39,6 +47,7 @@ void check_for_repeat(int ac ,  char **av)
             if(atoi(av[i]) == atoi(av[j++]) ) 
                 exit(1) ; 
         } 
+
         i++;  
     }  
 }
@@ -46,6 +55,7 @@ void check_for_repeat(int ac ,  char **av)
 void  check_final(int ac ,  char ** av )
 { 
     int  i =  1  ; 
+
     check_args_numerique(ac  ,av) ;
     check_for_repeat(ac , av ); 
     

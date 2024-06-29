@@ -1,7 +1,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "push_swap.h"
-//remspace is good 
+
 char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
@@ -24,7 +24,7 @@ char ** rem_space(char *av)
     result = ft_split(av,' '); 
     return(result) ;  
 } 
-char** parse_args(int ac, char **av) {
+char** parse_args(int ac, char **av ,  int *  length ) {
     int i = 1, j, k;
     int total_length = 0;
     int index = 0;
@@ -37,15 +37,18 @@ char** parse_args(int ac, char **av) {
         return NULL;
 
     i = 1;  
-
+    total_length = 0;  
     while (i < ac) {
         char **tmp = rem_space(av[i++]);
         j = 0;
-            while (tmp[j]) {
+            while (tmp[j]) 
+            {
+                total_length += 1  ;   
                 parsed_args[index++] = tmp[j++];
             }
         }
-    parsed_args[index] = NULL ; 
+    * length   = total_length  ;  
+    check_for_repeat(total_length,parsed_args) ; 
     return parsed_args;
 }
 

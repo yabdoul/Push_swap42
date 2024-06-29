@@ -23,24 +23,27 @@ stack_t* add_to_list(stack_t * node, stack_t * head)
 
     return head; 
 }
-void stack_to_list(int ac , char **  av , stack_t * head )
-{
-	int i  = 0 ; 
-	while(i <  ac )
-	{
-		stack_t * node = create_node(atoi(av[i++])) ; 
-		add_to_list(node,head) ;  		
-	}
-} 
+stack_t* stack_from_args(char **args, int ac) {
+    if (ac <= 0) {
+        return NULL; // Handle edge case where there are no arguments
+    }
+    
+    int i = 0; 
+    stack_t* head = create_node(atoi(args[i++]));
+    stack_t *current = head;
+    
+    while (i < ac) {
+        current->next = create_node(atoi(args[i++]));
+        current = current->next;
+    }
+    
+    return head;
+}
+
 size_t ft_strlen( char *s)
 {
     size_t leng = 0;
     int i = 0;
-	// if(ft_isdigit(s) == 0 )
-	// 	{
-	// 		printf("Error \n") ;
-	// 		exit(0);  
-	// 	}
 	while (s[i])
     {
         if (s[i] != ' ')
