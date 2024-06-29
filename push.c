@@ -1,5 +1,9 @@
 #include "push_swap.h"
 #include  <stdlib.h> 
+stack_t * swap_data(stack_t * stack_a ,  stack_t*  stack_b)
+{
+    stack_a->data =  stack_b->data ;  
+}
 stack_t *   pa(stack_t* stack_a ,  stack_t*  stack_b)
 {
     if(stack_a == NULL)
@@ -29,4 +33,23 @@ void sa(stack_t *  stack_a )
      helper = stack_a->data ;  
      stack_a->data =  stack_a->next->data ;  
      stack_a->next->data = helper ;  
+} 
+void sb(stack_t *  stack_b )
+{
+    if(!stack_b )
+          exit(1) ; 
+     int   helper  ;  
+     helper = stack_b->data ;  
+     stack_b->data =  stack_b->next->data ;  
+     stack_b->next->data = helper ;  
+} 
+void ra(stack_t * stack_a)
+{
+    stack_t *  tmp  =  stack_a  ; 
+    while(tmp->next != NULL)
+    {
+         tmp =tmp->next   ;  
+    }
+
+    stack_a->data = tmp->data ; 
 } 
