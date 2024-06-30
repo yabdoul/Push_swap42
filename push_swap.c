@@ -9,7 +9,8 @@ int main(int ac  , char **av)
   stack_t * stack_b = NULL ;
   // stack_a  = pa(stack_a , stack_b);  
   // stack_a = pa(stack_a , stack_b );  
-  sa(stack_a) ;  
+  // sa(stack_a) ;  
+  ra(stack_a); 
   stack_t *tmp = stack_a  ; 
   while(tmp != NULL )
   {

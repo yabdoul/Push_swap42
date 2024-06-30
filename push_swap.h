@@ -22,4 +22,7 @@ void check_for_repeat(int ac ,  char ** av ) ;
 stack_t *  pa(stack_t * stack_a ,  stack_t *  stack_b) ; 
 stack_t *  pb(stack_t* stack_a , stack_t*  stack_b); 
 void sa(stack_t * stack_a) ;  
-void sb(stack_t *  stack_b ); 
+void sb(stack_t *  stack_b); 
+void ra(stack_t * stack_a); 
+void rb(stack_t *stack_b); 
+void rr(stack_t *stack_a , stack_t * stack_b );  
