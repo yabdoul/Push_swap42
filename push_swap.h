@@ -29,3 +29,6 @@ void rr(stack_t *stack_a , stack_t * stack_b );
 void rra(stack_t ** stack_a );
 void rrb(stack_t ** stack_b) ; 
 void rrr(stack_t ** stack_a ,  stack_t** stack_b) ;  
+int * args_to_array(stack_t * stack_a);  
+void sort_array(int * arr , stack_t * stack_a);  
+void indexing(int *arr ,  stack_t * stack_a );   

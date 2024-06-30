@@ -1,5 +1,5 @@
 #include "push_swap.h"
-//TODO : adding index attrib and setting it  to stack_t\
+//TODO : adding index attrib and setting it  to stack_t -->done 
 int main(int ac  , char **av)
 {
   check_final(ac ,av) ; 
@@ -11,13 +11,13 @@ int main(int ac  , char **av)
   // stack_a  = pa(stack_a , stack_b);  
   // stack_a = pa(stack_a , stack_b );  
   // sa(stack_a) ;  
-  rra(&stack_a); 
-  stack_t *tmp =stack_a  ; 
-  while(tmp != NULL )
-  {
-    printf("%d \n",tmp->data); 
-    tmp = tmp->next ; 
-    i++ ; 
-  } 
- 
+int * arr = args_to_array(stack_a) ; 
+sort_array(arr,stack_a)  ; 
+indexing(arr,stack_a) ;  
+stack_t *tmp =stack_a  ; 
+while(tmp)
+{
+printf("[%d] = [%d] \n",tmp->index , tmp->data);
+tmp =  tmp->next ; 
+}
 } 
