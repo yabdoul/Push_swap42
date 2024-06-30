@@ -5,9 +5,9 @@
 #include <stdio.h> 
 typedef struct stack_s {
     int data;
-     struct stack_s* next;
+    int index ; 
+    struct stack_s* next;
 } stack_t;
-
 stack_t* create_node(int data);
 stack_t* add_to_list(stack_t* head, stack_t *node); 
 void stack_to_list(int ac, char** av,stack_t * head);

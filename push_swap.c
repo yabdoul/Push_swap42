@@ -1,4 +1,5 @@
 #include "push_swap.h"
+//TODO : adding index attrib and setting it  to stack_t\
 int main(int ac  , char **av)
 {
   check_final(ac ,av) ; 
