@@ -3,6 +3,7 @@
 
 stack_t *   pa(stack_t* stack_a ,  stack_t*  stack_b)
 {
+    printf("pa \n "); 
     if(stack_a == NULL)
         exit(1);  
     if(stack_b == NULL)
@@ -13,7 +14,7 @@ stack_t *   pa(stack_t* stack_a ,  stack_t*  stack_b)
  }
 stack_t *  pb(stack_t* stack_a , stack_t*  stack_b)
 {
-
+    printf("pb \n "); 
  if(stack_b == NULL)
         exit(1);  
     if(stack_a == NULL)
@@ -93,3 +94,36 @@ void rr(stack_t *stack_a , stack_t *stack_b)
      ra(stack_a); 
     rb(stack_b );   
 }
+void rra(stack_t ** stack_a )
+{
+     if(!*stack_a) 
+        exit(1) ;  
+    stack_t *last   = NULL  ;
+    stack_t *tmp =  *stack_a  ;  
+    while(tmp->next->next)
+        tmp = tmp->next ; 
+    last = tmp->next ; 
+    tmp->next = NULL ; 
+    last->next = *stack_a ; 
+    (*stack_a) = last ;  
+  } 
+void rrb(stack_t ** stack_b) 
+{ 
+    if(!*stack_b) 
+        exit(1) ; 
+      stack_t *last   = NULL  ;
+    stack_t *tmp =  *stack_b  ;  
+    while(tmp->next->next)
+        tmp = tmp->next ; 
+    last = tmp->next ; 
+    tmp->next = NULL ; 
+    last->next = *stack_b ; 
+    (*stack_b) = last ;  
+}
+void rrr(stack_t **  stack_a ,  stack_t ** stack_b)
+{
+    if(!*stack_a || !*stack_b) 
+     exit(1) ;  
+    rra(stack_a);
+    rrb(stack_b);  
+} 

@@ -9,7 +9,7 @@ typedef struct stack_s {
 } stack_t;
 
 stack_t* create_node(int data);
-stack_t* add_to_list(stack_t* head, stack_t *node); // Assuming you want to add to the head of the list
+stack_t* add_to_list(stack_t* head, stack_t *node); 
 void stack_to_list(int ac, char** av,stack_t * head);
 void  check_final(int ac ,  char ** av ); 
 char	**ft_split(const char  *s, char c) ; 
@@ -26,3 +26,6 @@ void sb(stack_t *  stack_b);
 void ra(stack_t * stack_a); 
 void rb(stack_t *stack_b); 
 void rr(stack_t *stack_a , stack_t * stack_b );  
+void rra(stack_t ** stack_a );
+void rrb(stack_t ** stack_b) ; 
+void rrr(stack_t ** stack_a ,  stack_t** stack_b) ;  
