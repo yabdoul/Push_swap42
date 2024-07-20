@@ -25,7 +25,7 @@ char ** rem_space(char *av)
     return(result) ;  
 } 
 char** parse_args(int ac, char **av ,  int *  length ) {
-    int i = 1, j, k;
+    int i = 1, j = 0 ;
     int total_length = 0;
     int index = 0;
     while (i < ac) {

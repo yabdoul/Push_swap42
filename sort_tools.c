@@ -26,8 +26,8 @@ int * args_to_array(stack_t * stack_a)
 }
 void sort_array(int * arr , stack_t * stack_a)
 {
-    int  i = 0 ;
-    int j  = 0 ;    
+    size_t  i = 0 ;
+    size_t j  = 0 ;    
     int tmp =  0 ;  
     while(i < lst_size(stack_a))
     {
@@ -47,7 +47,7 @@ void sort_array(int * arr , stack_t * stack_a)
 }
 void indexing(int *arr , stack_t *  stack_a )
 {
-    int i = 0  ; 
+    size_t i = 0  ; 
     stack_t  * tmp =  stack_a ;  
     if(!arr || !stack_a) 
       exit(0) ; 

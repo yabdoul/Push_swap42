@@ -54,9 +54,6 @@ void check_for_repeat(int ac ,  char **av)
 
 void  check_final(int ac ,  char ** av )
 { 
-    int  i =  1  ; 
-
     check_args_numerique(ac  ,av) ;
     check_for_repeat(ac , av ); 
-    
 }

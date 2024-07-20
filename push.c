@@ -1,28 +1,42 @@
 #include "push_swap.h"
 #include  <stdlib.h> 
+//pb is test  and its good 
+void pb(stack_t **stack_a, stack_t **stack_b)
+{
+    if (*stack_a == NULL) {
+        printf("stack_a is NULL in pb function\n");
+        return;
+    }
 
-stack_t *   pa(stack_t* stack_a ,  stack_t*  stack_b)
+    stack_t *top = *stack_a;  // Store the top element of stack_a
+    *stack_a = (*stack_a)->next;  // Move stack_a to the next element
+
+    if (*stack_b == NULL) {
+        *stack_b = top;  // If stack_b is empty, top becomes the new top of stack_b
+        (*stack_b)->next = NULL;  // Ensure the new top of stack_b points to NULL
+    } else {
+        top->next = *stack_b;  // Attach the top element to the current stack_b
+        *stack_b = top;  // Update stack_b to point to the new top element
+    }
+}
+
+void pa(stack_t **stack_a, stack_t **stack_b)
 {
-    printf("pa \n "); 
-    if(stack_a == NULL)
-        exit(1);  
-    if(stack_b == NULL)
-        { 
-            stack_b =  create_node(stack_a->data) ;
-        } 
-    return stack_a->next ;  
- }
-stack_t *  pb(stack_t* stack_a , stack_t*  stack_b)
-{
-    printf("pb \n "); 
- if(stack_b == NULL)
-        exit(1);  
-    if(stack_a == NULL)
-        { 
-            stack_a =  create_node(stack_b->data) ;
-        } 
-    return stack_b->next ;  
-} 
+    printf("pb\n");
+
+    if (*stack_b == NULL) {
+        return; 
+    }
+    stack_t *top_b = *stack_b; 
+    *stack_b = (*stack_b)->next; 
+    if (*stack_a == NULL) {
+        *stack_a = top_b; 
+        (*stack_a)->next = NULL; 
+    } else {
+        top_b->next = *stack_a; 
+        *stack_a = top_b; 
+    }
+}
 void sa(stack_t *  stack_a )
 {
     if(!stack_a )
@@ -94,19 +108,20 @@ void rr(stack_t *stack_a , stack_t *stack_b)
      ra(stack_a); 
     rb(stack_b );   
 }
-void rra(stack_t ** stack_a )
-{
-     if(!*stack_a) 
-        exit(1) ;  
-    stack_t *last   = NULL  ;
-    stack_t *tmp =  *stack_a  ;  
-    while(tmp->next->next)
-        tmp = tmp->next ; 
-    last = tmp->next ; 
-    tmp->next = NULL ; 
-    last->next = *stack_a ; 
-    (*stack_a) = last ;  
-  } 
+void rra(stack_t** stack_a) {
+    stack_t *prev = NULL ;  
+    stack_t *current= *stack_a  ;  
+     while (current->next != NULL) {
+        prev = current;
+        current = current->next;
+    }
+
+    if (prev != NULL) {
+        prev->next = NULL;
+        current->next = *stack_a;
+        *stack_a = current;
+    }
+}
 void rrb(stack_t ** stack_b) 
 { 
     if(!*stack_b) 
