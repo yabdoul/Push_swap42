@@ -63,3 +63,21 @@ void indexing(int *arr , stack_t *  stack_a )
     tmp = tmp->next ; 
    }
 } 
+int pivot_cmp(int pivot1 , stack_t * stack_a )  
+{  
+    stack_t * tmp =  stack_a  ; 
+     while(tmp) 
+     {  
+        if(tmp->data < pivot1) 
+            return 1 ;   
+        tmp = tmp->next ;  
+     }
+     return 0 ;  
+}
+void set_algo_data(stack_t *stack_a , data_t * data ) 
+{ 
+    data->size =  lst_size(stack_a)  ;
+    data->pivot1= data->size / 3 ; 
+    data->pivot2= (data->size / 6 ) + data->pivot1 ; 
+    data->rem = data->pivot1  ; 
+}

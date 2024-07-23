@@ -9,20 +9,6 @@ stack_t * create_node(int data)
 	node->next = NULL ;
 	return node ;  
 }
-stack_t* add_to_list(stack_t * node, stack_t * head)
-{
-    if (head == NULL) {
-        return node;
-    }
-
-    stack_t *tmp = head;
-    while (tmp->next != NULL) {
-        tmp = tmp->next;
-    }
-    tmp->next = node;
-
-    return head; 
-}
 stack_t* stack_from_args(char **args, int ac) {
     if (ac <= 0) {
         return NULL; // Handle edge case where there are no arguments
