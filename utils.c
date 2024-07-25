@@ -11,7 +11,7 @@ stack_t * create_node(int data)
 }
 stack_t* stack_from_args(char **args, int ac) {
     if (ac <= 0) {
-        return NULL; // Handle edge case where there are no arguments
+        return NULL; 
     }
     
     int i = 0; 

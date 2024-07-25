@@ -1,8 +1,7 @@
 #include "push_swap.h"
-//TODO : adding index attrib and setting it  to stack_t -->done 
-//TODO: implementing the 5 sort hardcode algorithme 
-//TODO: implementing the large sort  algo 
 
+//todo ==  fix parsing things  n negative numbers and some additional things  
+// wondering whhy 500 numbers gives me 13000 moves 
 int main(int ac  , char **av)
 {
   check_final(ac ,av) ; 
@@ -15,11 +14,21 @@ int  *tab_tmp = args_to_array(stack_a)  ;
 sort_array(tab_tmp,stack_a) ; 
 indexing(tab_tmp,stack_a) ;  
 set_algo_data(stack_a ,algo_data)  ;  
-large_sort(&stack_a,&stack_b,algo_data)  ; 
- stack_t * tmp  = stack_a ;  
- while(tmp) 
- { 
-  printf("%d \n ", tmp->index )  ;  
-  tmp = tmp->next ; 
- }
+  if(algo_data->size == 3 ) 
+    sort_three(&stack_a ,&stack_b )  ;  
+  else if(algo_data->size == 5 ) 
+     sort_five(&stack_a,&stack_b) ; 
+  else if (algo_data->size ==  4 )
+      sort_four(&stack_a , &stack_a ) ;  
+  else { 
+large_sort(&stack_a,&stack_b,tab_tmp,algo_data->size)  ; 
+sort_stack_b(&stack_a,&stack_b ) ; 
+  }
+stack_t *tmp = stack_a ;  
+while(tmp) 
+{ 
+  printf("%d \n ",tmp->data ) ;  
+  tmp = tmp->next ;  
+}
+
  } 

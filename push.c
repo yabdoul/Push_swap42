@@ -4,12 +4,11 @@
 //get ar
 void pb(stack_t **stack_a, stack_t **stack_b)
 {
-    printf("pb\n ")  ;  
     if (*stack_a == NULL) {
         printf("stack_a is NULL in pb function\n");
         return;
     }
-
+    printf("pb\n ")  ;  
     stack_t *top = *stack_a;  
     *stack_a = (*stack_a)->next;  
 
@@ -24,11 +23,11 @@ void pb(stack_t **stack_a, stack_t **stack_b)
 
 void pa(stack_t **stack_a, stack_t **stack_b)
 {
-    printf("pa\n ")  ;  
 
     if (*stack_b == NULL) {
         return; 
     }
+    printf("pa\n ")  ;  
     stack_t *top_b = *stack_b; 
     *stack_b = (*stack_b)->next; 
     if (*stack_a == NULL) {
@@ -41,36 +40,37 @@ void pa(stack_t **stack_a, stack_t **stack_b)
 }
 void sa(stack_t ** stack_a )
 {
-        printf("sa\n ")  ;  
-    if(!*stack_a )
+    if(!*stack_a || !(*stack_a)->next )
           exit(1) ; 
+        printf("sa\n ")  ;  
      int   helper  ;  
      helper = (*stack_a)->data ;  
      (*stack_a)->data =  (*stack_a)->next->data ;  
      (*stack_a)->next->data = helper ;  
 } 
-void sb(stack_t *  stack_b )
+void sb(stack_t ** stack_b )
 {
-        printf("sb \n ")  ;  
-    if(!stack_b )
+    if(!*stack_b || !(*stack_b)->next )
           exit(1) ; 
+        printf("sb\n ")  ;  
      int   helper  ;  
-     helper = stack_b->data ;  
-     stack_b->data =  stack_b->next->data ;  
-     stack_b->next->data = helper ;  
+     helper = (*stack_b)->data ;  
+     (*stack_b)->data =  (*stack_b)->next->data ;  
+     (*stack_b)->next->data = helper ;  
 } 
 void ss(stack_t  *stack_a  ,  stack_t * stack_b)
 {
     if(!stack_a ||  !stack_b )
         exit(1) ;  
     sa(&stack_a) ;
-    sb(stack_b )  ; 
+    sb(&stack_b )  ; 
 } 
 void ra(stack_t **stack_a) {
     if (*stack_a == NULL || (*stack_a)->next == NULL) {
         return;
     }
-    stack_t *last = *stack_a;
+    stack_t *last = *stack_a; 
+    printf("ra\n") ; 
     while (last->next != NULL) {
         last = last->next;
     }
@@ -83,6 +83,7 @@ void rb(stack_t **stack_b) {
      if (*stack_b == NULL || (*stack_b)->next == NULL) {
         return;
     }
+    printf("rb \n") ;  
     stack_t *last = *stack_b;
     while (last->next != NULL) {
         last = last->next;
@@ -91,18 +92,19 @@ void rb(stack_t **stack_b) {
     *stack_b = (*stack_b)->next;
     last->next->next = NULL;
 }
-void rr(stack_t *stack_a , stack_t *stack_b)
+void rr(stack_t **stack_a , stack_t **stack_b)
 { 
-    if(!stack_a ||  !stack_b)
+    if(!*stack_a ||  !*stack_b)
         exit(1); 
-     ra(&stack_a); 
-    rb(&stack_b );   
+     ra(stack_a); 
+    rb(stack_b );   
 }
 void rra(stack_t** stack_a) {
-    printf("rra\n");
     if (*stack_a == NULL || (*stack_a)->next == NULL) {
         return; 
     }
+    printf("rra\n");
+
     stack_t *last = *stack_a;
     stack_t *second_last = NULL;
     while (last->next) {
@@ -118,6 +120,7 @@ void rrb(stack_t ** stack_b)
 { 
     if(!*stack_b) 
         exit(1) ; 
+    printf("rrb\n") ;  
       stack_t *last   = NULL  ;
     stack_t *tmp =  *stack_b  ;  
     while(tmp->next->next)

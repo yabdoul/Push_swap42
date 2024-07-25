@@ -63,21 +63,35 @@ void indexing(int *arr , stack_t *  stack_a )
     tmp = tmp->next ; 
    }
 } 
-int pivot_cmp(int pivot1 , stack_t * stack_a )  
+int  get_node_index(stack_t *stack  , int val ) 
+{ 
+    int i = 0  ;  
+    stack_t *tmp =  stack ;  
+    while(tmp) 
+        { 
+            if(tmp->data == val ) 
+                return i  ; 
+                     i++ ; 
+            tmp = tmp->next;  
+        }
+    return i ; 
+}
+int get_max(stack_t *stack)  
 {  
-    stack_t * tmp =  stack_a  ; 
-     while(tmp) 
-     {  
-        if(tmp->data < pivot1) 
-            return 1 ;   
-        tmp = tmp->next ;  
-     }
-     return 0 ;  
+  stack_t *tmp = stack ;  
+    int max  = stack->data ; 
+  while(tmp) 
+  { 
+    if(max < tmp->data ) 
+        max = tmp->data ;  
+    tmp = tmp->next ; 
+  } 
+  return max  ; 
 }
 void set_algo_data(stack_t *stack_a , data_t * data ) 
 { 
     data->size =  lst_size(stack_a)  ;
     data->pivot1= data->size / 3 ; 
     data->pivot2= (data->size / 6 ) + data->pivot1 ; 
-    data->rem = data->pivot1  ; 
+    data->rem = -1  ; 
 }

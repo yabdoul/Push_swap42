@@ -12,7 +12,7 @@ OBJS = ${SRC:%.c=%.o}
 all: ${NAME}
 
 ${NAME}: ${OBJS}
-	$(CC) $(CFLAGS) $(OBJS)  -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS)  -o $(NAME) 
   
 clean:
 	rm -f ${OBJS}

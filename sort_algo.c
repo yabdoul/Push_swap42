@@ -1,8 +1,4 @@
 #include "push_swap.h"
-//sort five  12 moves 
-//next step checking atgs length !! ---- 
-//start implementing the larger algorithme 
-
 int get_index_tab(int *tab , int val ,int size) 
 {   
 	int i = 0 ;  
@@ -54,19 +50,61 @@ void sort_five(stack_t **stack_a ,stack_t **stack_b)
 	sort_four(stack_a , stack_b)  ;  
 	pa(stack_a,stack_b) ;  
 }
-void large_sort(stack_t **stack_a, stack_t **stack_b, data_t *algo_data) {
-    while (*stack_a) {
-        while (*stack_a && pivot_cmp(algo_data->pivot1, *stack_a)) {
-            if ((*stack_a)->index < algo_data->pivot1) { 
-                pb(stack_a, stack_b);
-				 printf(" stack_b =  %d ",(*stack_b)->data ) ;   
 
-			} else {
-                ra(stack_a); 
-            }
-        }
-	algo_data->rem  = algo_data->pivot1 ;  
-	algo_data->pivot2 = (lst_size(*stack_a) / 6 ) + algo_data->rem ;  
-	algo_data->pivot1 += lst_size(*stack_a) / 3 ; 
-     }
+void large_sort(stack_t **stack_a, stack_t **stack_b,int *tab  , int size ) 
+{ 
+	int start ;  
+	int end ;  
+	
+	start = 0 ;  
+	if(size > 5 && size <= 100 )
+		end =size / 4 ;  
+	else 
+		end = 30  ;   
+	while(*stack_a ) 
+	{ 
+		if((*stack_a)->data >= tab[start] && (*stack_a)->data <= tab[end])
+				{
+					end ++;  
+					start++ ; 
+					 pb(stack_a , stack_b) ;
+					if(end >= size ) 
+						end = size - 1     ;
+				}  
+		else if ((*stack_a)->data < tab[start]) {
+	end ++;  
+	start++ ; 	
+    pb(stack_a, stack_b);
+    rb(stack_b);
+	if(end >=size ) 
+		end = size - 1  ; 
+}
+else if ((*stack_a)->data > tab[end]) {
+    ra(stack_a);
+}
+	}	
+}
+void sort_stack_b(stack_t ** stack_a,stack_t ** stack_b )
+{
+int max_val;
+int middle;
+int max_index;
+
+while (*stack_b)
+{
+max_val = get_max(*stack_b);
+middle = lst_size(*stack_a) / 2;
+max_index = get_node_index(*stack_b, max_val);
+if (max_index <= middle)
+{
+while ((*stack_b)->data != max_val)
+rb(stack_b);
+}
+else if (max_val >= middle)
+{
+while ((*stack_b)->data != max_val)
+rrb(stack_b);
+}
+pa(stack_a, stack_b);
+}
 }
