@@ -21,14 +21,8 @@ set_algo_data(stack_a ,algo_data)  ;
   else if (algo_data->size ==  4 )
       sort_four(&stack_a , &stack_a ) ;  
   else { 
-large_sort(&stack_a,&stack_b,tab_tmp,algo_data->size)  ; 
-sort_stack_b(&stack_a,&stack_b ) ; 
+    int size = algo_data->size ; 
+large_sort(&stack_a , &stack_b , size)  ; 
+sort_stack_b(&stack_a,&stack_b ,size ) ; 
   }
-stack_t *tmp = stack_a ;  
-while(tmp) 
-{ 
-  printf("%d \n ",tmp->data ) ;  
-  tmp = tmp->next ;  
 }
-
- } 

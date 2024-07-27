@@ -50,61 +50,65 @@ void sort_five(stack_t **stack_a ,stack_t **stack_b)
 	sort_four(stack_a , stack_b)  ;  
 	pa(stack_a,stack_b) ;  
 }
-
-void large_sort(stack_t **stack_a, stack_t **stack_b,int *tab  , int size ) 
-{ 
-	int start ;  
-	int end ;  
-	
-	start = 0 ;  
-	if(size > 5 && size <= 100 )
-		end =size / 4 ;  
-	else 
-		end = 30  ;   
-	while(*stack_a ) 
+//todo making a function thts check  for the nearest  node in range and checking its top or bottom
+int   get_index_nearest(stack_t* node  , int range , int  i ) 
+{   
+	stack_t *tmp = node; 
+	int j = 0 ;  
+	while(tmp) 
 	{ 
-		if((*stack_a)->data >= tab[start] && (*stack_a)->data <= tab[end])
-				{
-					end ++;  
-					start++ ; 
-					 pb(stack_a , stack_b) ;
-					if(end >= size ) 
-						end = size - 1     ;
-				}  
-		else if ((*stack_a)->data < tab[start]) {
-	end ++;  
-	start++ ; 	
-    pb(stack_a, stack_b);
-    rb(stack_b);
-	if(end >=size ) 
-		end = size - 1  ; 
+		 if(tmp->index >= i  &&  tmp->index <= range + i ) 
+		 	return j  ;  
+		 tmp =  tmp->next ;
+		 j++;    
+	}
+	return -1 ;  
 }
-else if ((*stack_a)->data > tab[end]) {
-    ra(stack_a);
+void large_sort(stack_t **stack_a, stack_t **stack_b, int size ) 
+{ 
+	int range = 0.0375 * size + 11.75;   
+	int  i = 0 ; 
+	while(i < size ) 
+	{  
+		if((*stack_a)->index  <= i  ) 
+		{  
+			pb(stack_a ,  stack_b) ;  
+			rb(stack_b) ;  
+			i++ ; 
+		}
+		else if((*stack_a)->index  <= range + i  ) 
+		{ 
+			 pb(stack_a, stack_b ) ;  
+			 i++ ; 
+		}
+		else if(get_index_nearest(*stack_a , range , i) <= size / 2 ) 
+			{ 	
+				ra(stack_a) ; 
+			}
+			else  
+				rra(stack_a) ; 
+	}
 }
-	}	
-}
-void sort_stack_b(stack_t ** stack_a,stack_t ** stack_b )
-{
-int max_val;
-int middle;
-int max_index;
 
+void sort_stack_b(stack_t ** stack_a,stack_t ** stack_b ,int size)
+{
+stack_t* max;
+int range = 0.0375 * size + 11.75;   
 while (*stack_b)
 {
-max_val = get_max(*stack_b);
-middle = lst_size(*stack_a) / 2;
-max_index = get_node_index(*stack_b, max_val);
-if (max_index <= middle)
-{
-while ((*stack_b)->data != max_val)
-rb(stack_b);
+max = get_max(*stack_b);
+int index  = get_node_index(*stack_b , max->data) ; 
+if(index == 0 ) 
+{ 
+	pa(stack_a , stack_b)  ; 
 }
-else if (max_val >= middle)
+else if (index<= range )
 {
-while ((*stack_b)->data != max_val)
-rrb(stack_b);
+	rb(stack_b) ; 
 }
-pa(stack_a, stack_b);
+else { 
+	rrb(stack_b) ; 
+}
+
 }
 }

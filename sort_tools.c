@@ -76,14 +76,14 @@ int  get_node_index(stack_t *stack  , int val )
         }
     return i ; 
 }
-int get_max(stack_t *stack)  
+stack_t* get_max(stack_t *stack)  
 {  
   stack_t *tmp = stack ;  
-    int max  = stack->data ; 
+    stack_t* max  =tmp ; 
   while(tmp) 
   { 
-    if(max < tmp->data ) 
-        max = tmp->data ;  
+    if(max->data < tmp->data ) 
+        max = tmp ;  
     tmp = tmp->next ; 
   } 
   return max  ; 
