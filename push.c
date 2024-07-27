@@ -8,7 +8,7 @@ void pb(stack_t **stack_a, stack_t **stack_b)
         printf("stack_a is NULL in pb function\n");
         return;
     }
-    printf("pb\n ")  ;  
+    printf("pb\n")  ;  
     stack_t *top = *stack_a;  
     *stack_a = (*stack_a)->next;  
 
@@ -27,7 +27,7 @@ void pa(stack_t **stack_a, stack_t **stack_b)
     if (*stack_b == NULL) {
         return; 
     }
-    printf("pa\n ")  ;  
+    printf("pa\n")  ;  
     stack_t *top_b = *stack_b; 
     *stack_b = (*stack_b)->next; 
     if (*stack_a == NULL) {
@@ -83,7 +83,7 @@ void rb(stack_t **stack_b) {
      if (*stack_b == NULL || (*stack_b)->next == NULL) {
         return;
     }
-    printf("rb \n") ;  
+    printf("rb\n") ;  
     stack_t *last = *stack_b;
     while (last->next != NULL) {
         last = last->next;
@@ -100,7 +100,7 @@ void rr(stack_t **stack_a , stack_t **stack_b)
     rb(stack_b );   
 }
 void rra(stack_t** stack_a) {
-    if (*stack_a == NULL || (*stack_a)->next == NULL) {
+    if (*stack_a == NULL || (*stack_a)->next == NULL) { 
         return; 
     }
     printf("rra\n");

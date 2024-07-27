@@ -13,44 +13,64 @@ char	*ft_strchr(const char *s, int c)
 		return ((char *)&s[i]);
 	return (NULL);
 }
-char ** rem_space(char *av)
+
+void free_chars(char **str, int size)
 {
-    char **result  = malloc(ft_strlen(av) * sizeof(char *) + 1) ; 
-    if(!result) 
-        { 
-            free(result); 
-            return(NULL);   
-        }  
-    result = ft_split(av,' '); 
-    return(result) ;  
-} 
-char** parse_args(int ac, char **av ,  int *  length ) {
-    int i = 1, j = 0 ;
+    int i = 0;
+    while (i < size)
+    {
+        free(str[i]);
+        i++;
+    }
+    free(str);
+}
+
+char **rem_space(char *av)
+{
+    char **result = ft_split(av, ' ');
+    if (!result)
+    {
+        return NULL;
+    }
+    return result;
+}
+
+char** parse_args(int ac, char **av, int *length)
+{
+    int i = 1, j;
     int total_length = 0;
     int index = 0;
-    while (i < ac) {
+
+    while (i < ac)
+    {
         total_length += ft_strlen(av[i]);
         i++;
     }
-    char ** parsed_args = malloc(sizeof(char *) * (total_length + 1 ));
+    char **parsed_args = malloc(sizeof(char *) * (total_length + 1));
     if (parsed_args == NULL)
+    {
         return NULL;
+    }
 
-    i = 1;  
-    total_length = 0;  
-    while (i < ac) {
+    i = 1;
+    while (i < ac)
+    {
         char **tmp = rem_space(av[i++]);
-        j = 0;
-            while (tmp[j]) 
-            {
-                total_length += 1  ;   
-                parsed_args[index++] = tmp[j++];
-            }
+        if (!tmp)
+        {
+            free(parsed_args);
+            return NULL;
         }
-    * length   = total_length  ;  
-    check_for_repeat(total_length,parsed_args) ; 
+
+        j = 0;
+        while (tmp[j])
+        {
+            parsed_args[index++] = tmp[j++];
+        }
+        free(tmp);
+    }
+    parsed_args[index] = NULL;
+    *length = index;
+    check_for_repeat(index, parsed_args);
     return parsed_args;
 }
-
-
-

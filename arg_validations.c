@@ -15,7 +15,7 @@
             exit(1); 
         } 
     while(c[i]) 
-    {    if((c[i] < '0' || c[i] > '9') && (c[i] != ' '))
+    {    if((c[i] < '0' || c[i] > '9') && (c[i] != ' ') && (c[i] != '-'))
                 {
                     printf("Error\n"); 
                     exit(1);
@@ -45,7 +45,10 @@ void check_for_repeat(int ac ,  char **av)
         while(j < ac)
         {
             if(atoi(av[i]) == atoi(av[j++]) ) 
-                exit(1) ; 
+               {
+                printf("error\n") ;  
+                exit(1) ;
+               }
         } 
 
         i++;  

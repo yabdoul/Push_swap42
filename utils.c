@@ -5,6 +5,10 @@ stack_t * create_node(int data)
 {
 
 	stack_t * node  =  malloc(sizeof(stack_t)); 
+    if(node == NULL ) 
+       {
+         free(node ) ;  
+       }
 	node->data = data ; 
 	node->next = NULL ;
 	return node ;  
