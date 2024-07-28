@@ -47,4 +47,7 @@ int pivot_cmp(int pivot1 , stack_t * stack_a )   ;
 size_t lst_size(stack_t *head)  ; 
 void large_sort(stack_t **stack_a, stack_t **stack_b, int size )   ;  
 void sort_stack_b(stack_t **sa,stack_t **sb,int size)  ; 
-stack_t* get_max(stack_t *stack)   ;  
+stack_t* get_max(stack_t *stack)    ; 
+int check_sorted(stack_t *stack_a)  ;  
+int	ft_atoi(const char *nptr) ;  
+char	*ft_strchr(const char *s, int c); 

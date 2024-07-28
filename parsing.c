@@ -1,7 +1,21 @@
 #include <stdlib.h>
 #include <string.h>
 #include "push_swap.h"
-
+int add_checker(char *s) 
+{  
+    int  i = 0 ; 
+    int checker = 0 ;    
+    while(s[i]) 
+        { 
+            if(s[i] == '-' || s[i] == '+') 
+            checker++ ; 
+        i++ ; 
+        }
+        if(checker  <= 1  ) 
+            return 1 ;  
+        else  
+            return 0 ;  
+}
 char	*ft_strchr(const char *s, int c)
 {
 	size_t	i;
@@ -42,15 +56,11 @@ char** parse_args(int ac, char **av, int *length)
     int index = 0;
 
     while (i < ac)
-    {
-        total_length += ft_strlen(av[i]);
-        i++;
-    }
+        total_length += ft_strlen(av[i++]);
+
     char **parsed_args = malloc(sizeof(char *) * (total_length + 1));
     if (parsed_args == NULL)
-    {
         return NULL;
-    }
 
     i = 1;
     while (i < ac)
@@ -64,9 +74,14 @@ char** parse_args(int ac, char **av, int *length)
 
         j = 0;
         while (tmp[j])
-        {
+         {
+            if(!add_checker(tmp[j])) 
+                { 
+                    printf("error \n ") ;  
+                    exit(-1);  
+                } 
             parsed_args[index++] = tmp[j++];
-        }
+         } 
         free(tmp);
     }
     parsed_args[index] = NULL;
