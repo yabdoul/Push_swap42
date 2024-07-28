@@ -34,7 +34,6 @@ int	ft_isdigit(char *c)
 	while (c[i])
 	{
 		check_char(c[i]);
-	
 		i++;
 	}
 	return (1);
