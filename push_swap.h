@@ -6,7 +6,7 @@
 /*   By: yabdoul <yabdoul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 20:46:56 by yabdoul           #+#    #+#             */
-/*   Updated: 2024/07/28 20:56:53 by yabdoul          ###   ########.fr       */
+/*   Updated: 2024/07/29 15:02:05 by yabdoul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,6 @@ int					add_checker(char *s);
 void				free_chars(char **str, int size);
 char				**rem_space(char *av);
 void				set_algo_data(t_stack *stack_a, t_data *data);
-
+void				rendering_by_size(t_stack **stack_a, t_stack **stack_b,
+						int size);
 #endif

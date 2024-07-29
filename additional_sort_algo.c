@@ -6,7 +6,7 @@
 /*   By: yabdoul <yabdoul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:29:23 by yabdoul           #+#    #+#             */
-/*   Updated: 2024/07/28 20:47:45 by yabdoul          ###   ########.fr       */
+/*   Updated: 2024/07/29 15:11:11 by yabdoul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,19 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 	pb(stack_a, stack_b);
 	sort_three(stack_a, stack_b);
 	pa(stack_a, stack_b);
+}
+
+void	rendering_by_size(t_stack **stack_a, t_stack **stack_b, int size)
+{
+	if (size == 3)
+		sort_three(stack_a, stack_b);
+	else if (size == 5)
+		sort_five(stack_a, stack_b);
+	else if (size == 4)
+		sort_four(stack_a, stack_a);
+	else
+	{
+		large_sort(stack_a, stack_b, size);
+		sort_stack_b(stack_a, stack_b, size);
+	}
 }
