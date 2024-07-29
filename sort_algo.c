@@ -6,7 +6,7 @@
 /*   By: yabdoul <yabdoul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:30:31 by yabdoul           #+#    #+#             */
-/*   Updated: 2024/07/28 20:47:45 by yabdoul          ###   ########.fr       */
+/*   Updated: 2024/07/29 16:11:10 by yabdoul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,23 @@ int	get_index_tab(int *tab, int val, int size)
 void	sort_five(t_stack **stack_a, t_stack **stack_b)
 {
 	t_stack	*min;
+	int		min_index;
 
 	min = find_min(*stack_a);
+	min_index = 0;
 	while (*stack_a != min)
-		rra(stack_a);
+	{
+		ra(stack_a);
+		min_index++;
+	}
 	pb(stack_a, stack_b);
 	sort_four(stack_a, stack_b);
 	pa(stack_a, stack_b);
+	if (min_index > 0)
+	{
+		while (min_index--)
+			rra(stack_a);
+	}
 }
 
 int	get_index_nearest(t_stack *node, int range, int i)

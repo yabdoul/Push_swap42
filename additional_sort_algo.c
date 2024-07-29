@@ -6,7 +6,7 @@
 /*   By: yabdoul <yabdoul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:29:23 by yabdoul           #+#    #+#             */
-/*   Updated: 2024/07/29 15:26:33 by yabdoul          ###   ########.fr       */
+/*   Updated: 2024/07/29 16:07:16 by yabdoul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,6 @@ void	sort_four(t_stack **stack_a, t_stack **stack_b)
 
 void	rendering_by_size(t_stack **stack_a, t_stack **stack_b, int size)
 {
-	printf("[%d]",size) ;  
 	if (size == 3)
 		sort_three(stack_a, stack_b);
 	else if (size == 5)

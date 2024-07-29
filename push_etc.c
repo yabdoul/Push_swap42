@@ -6,7 +6,7 @@
 /*   By: yabdoul <yabdoul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 17:24:58 by yabdoul           #+#    #+#             */
-/*   Updated: 2024/07/28 20:47:45 by yabdoul          ###   ########.fr       */
+/*   Updated: 2024/07/29 16:08:49 by yabdoul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void	sa(t_stack **stack_a)
 
 	if (!*stack_a || !(*stack_a)->next)
 		exit(1);
-	printf("sa\n ");
+	printf("sa\n");
 	helper = (*stack_a)->data;
 	(*stack_a)->data = (*stack_a)->next->data;
 	(*stack_a)->next->data = helper;
@@ -77,7 +77,7 @@ void	sb(t_stack **stack_b)
 
 	if (!*stack_b || !(*stack_b)->next)
 		exit(1);
-	printf("sb\n ");
+	printf("sb\n");
 	helper = (*stack_b)->data;
 	(*stack_b)->data = (*stack_b)->next->data;
 	(*stack_b)->next->data = helper;
