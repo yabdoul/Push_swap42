@@ -6,7 +6,7 @@
 /*   By: yabdoul <yabdoul@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/07/28 20:55:13 by yabdoul           #+#    #+#             */
-/*   Updated: 2024/07/29 15:13:41 by yabdoul          ###   ########.fr       */
+/*   Updated: 2024/07/29 15:27:13 by yabdoul          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,16 @@ int	main(int ac, char **av)
 	parsed_args = parse_args(ac, av, &total_length);
 	stack_a = stack_from_args(parsed_args, total_length);
 	tab_tmp = args_to_array(stack_a);
-	printf("[] %d \n", total_length);
 	if (!check_sorted(stack_a))
 	{
 		printf("error \n ");
 		exit(-1);
+	}
+	t_stack *tmp = stack_a ;  
+	while(tmp) 
+	{ 
+		printf("%d\n",tmp->data ) ;  
+		tmp=tmp->next ; 
 	}
 	sort_array(tab_tmp, stack_a);
 	indexing(tab_tmp, stack_a);
@@ -71,3 +76,4 @@ int	main(int ac, char **av)
 	free_stacks_tab(stack_a, stack_b, tab_tmp);
 	free_args(parsed_args, total_length);
 }
+///todo fix sort five algo 
